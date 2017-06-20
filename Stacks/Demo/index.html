@@ -1,0 +1,27 @@
+<html>
+  <head></head>
+  <body>
+    <script src="../stack.js" charset="utf-8"></script>
+    <script>
+    (function() {
+      var stack = new Stack();
+      document.write('<h3>Is stack empty?</h3>' + stack.isEmpty());
+      document.write('<p>Adding 10 & 19 numbers to the stack...</p>');
+      stack.push(10);
+      stack.push(19);
+      document.write('<p>Last element: </p>' + stack.peek());
+      document.write('<p>Adding 11 to the stack</p>');
+      stack.push(11);
+      document.write('<p>Size of the stack: </p>' + stack.size());
+      document.write('<h3>Is stack empty?</h3>' + stack.isEmpty());
+      document.write('<p>Adding 15 to the stack</p>');
+      stack.push(15);
+      document.write('<p>Removing two elements from the stack</p>');
+      stack.pop();
+      stack.pop();
+      document.write('<p>Size of the stack: </p>' + stack.size());
+      document.write('<p>Stack: </p>' + stack.print());
+    })();
+    </script>
+  </body>
+</html>

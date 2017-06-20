@@ -1,0 +1,45 @@
+<html>
+  <head></head>
+  <body>
+    <h1>Base Converter demo</h1>
+    <input type="text" class="js-number" placeholder="Number here!" />
+    <div class="js-result-container"></div>
+    <script src="../stack.js" charset="utf-8"></script>
+    <script>
+    (function () {
+
+      var calculate = function() {
+        var value = document.getElementsByClassName('js-number')[0].value;
+        var resultContainer = document.getElementsByClassName('js-result-container')[0];
+        if (value) {
+          resultContainer.innerHTML = '<table style="border: 1px solid;">\
+          <tbody><tr><td><strong>Binary</strong></td><td>'+baseConverter(2, value)+'</td></tr>\
+          <tbody><tr><td><strong>Hexa</strong></td><td>'+baseConverter(16, value)+'</td></tr>\
+          </tbody></table>';
+        } else {
+          resultContainer.innerHTML = '<p style="color: red;">Not number</p>';
+        }
+      };
+
+      function baseConverter(base, number) {
+        var remStack = new Stack(), rem, binaryString = '', digits = '0123456789ABCDEF';
+
+        while (number > 0) {
+          rem = Math.floor(number % base);
+          remStack.push(rem);
+          number = Math.floor(number / base);
+        }
+
+        while(!remStack.isEmpty()) {
+          binaryString += digits[remStack.pop()];
+        }
+
+        return binaryString;
+      }
+
+      var input = document.getElementsByClassName('js-number')[0];
+      input.addEventListener('keyup', calculate);
+    })();
+    </script>
+  </body>
+</html>
